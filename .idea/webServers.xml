@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="fb84aec0-042a-4220-a0b0-a08c55a866a8" name="Task1" url="https://test-project-1/">
+        <fileTransfer mountedRoot="C:\OSPanel\home\test-project-1" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>
