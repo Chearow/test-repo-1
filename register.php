@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
     $email =$conn->real_escape_string($_POST['email']);
     $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users (email, password) VALUES ('$email', '$pass')";
+    $sql = "INSERT INTO users (email, password_hash) VALUES ('$email', '$pass')";
 
     if ($conn->query($sql) === TRUE) {
         echo "<div class = 'alert alert-success'>Регистрация прошла успешно! </div>";
