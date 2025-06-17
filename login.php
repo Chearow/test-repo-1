@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $loginError = "Неверный формат email.";
     } else {
-        $stmt = $conn->prepare("SELECT id password_hash FROM users WHERE email = ?");
+        $stmt = $conn->prepare("SELECT id, password_hash FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
