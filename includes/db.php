@@ -10,5 +10,3 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     throw new RuntimeException("Ошибка подключения: " . $conn->connect_error);
 }
-
-echo "Подключение к базе данных прошло успешно.";

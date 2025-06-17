@@ -3,11 +3,10 @@ require_once "includes/db.php";
 /** @var mysqli $conn */
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
-    $user =$conn->real_escape_string($_POST['username']);
     $email =$conn->real_escape_string($_POST['email']);
     $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users (username, email, password) VALUES ('$user', '$email', '$pass')";
+    $sql = "INSERT INTO users (email, password) VALUES ('$email', '$pass')";
 
     if ($conn->query($sql) === TRUE) {
         echo "<div class = 'alert alert-success'>Регистрация прошла успешно! </div>";
@@ -31,13 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
 
     <h2>Регистрация</h2>
     <form method="POST" action="">
-        <div class="mb-3">
-            <label class="form-label">Имя пользователя</label>
-            <label>
-                <input type="text" class="form-control" name="username" value="<?=htmlspecialchars($_POST['username'] ??'') ?>" required>
-            </label>
-        </div>
-
         <div class="mb-3">
             <label class="form-label">Электронная почта</label>
             <label>

@@ -11,7 +11,9 @@ requireLogin();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="container mt-5">
-<h2>Добро пожаловать, <?= htmlspecialchars($_SESSION['user'])?>!</h2>
-<a href="logout.php" class="btn btn-danger">Выйти</a>
+    <h2>Добро пожаловать!</h2>
+    <p>Вы успешно авторизованы. Ваш ID пользователя: <strong><?= htmlspecialchars($_SESSION['user_id']) ?></strong></p>
+
+    <a href="logout.php" class="btn btn-danger">Выйти</a>
 </body>
 </html>

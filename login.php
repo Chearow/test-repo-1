@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $loginError = "Неверный формат email.";
     } else {
-        $stmt = $conn->prepare("SELECT username, password FROM users WHERE email = ?");
+        $stmt = $conn->prepare("SELECT id password_hash FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
         if ($result->num_rows === 1) {
             $user = $result->fetch_assoc();
 
-            if (password_verify($pass, $user["password"])) {
+            if (password_verify($pass, $user["password_hash"])) {
                 $_SESSION['user'] = $user['username'];
                 $conn->close();
                 header('Location: dashboard.php');
