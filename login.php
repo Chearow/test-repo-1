@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
             $user = $result->fetch_assoc();
 
             if (password_verify($pass, $user["password_hash"])) {
-                $_SESSION['user'] = $user['username'];
+                $_SESSION['user_id'] = $user['id'];
                 $conn->close();
                 header('Location: dashboard.php');
                 exit();
