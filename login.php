@@ -63,17 +63,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
 
     <form method="POST" action="">
         <div class="mb-3">
-            <label class="form-label">Электронная почта</label>
-            <label>
-                <input type="email" class="form-control" name="email" value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''?>" required>
-            </label>
+            <label class="form-label" for="email">Электронная почта</label>
+            <input id="email" type="email" class="form-control" name="email" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Пароль</label>
-            <label>
-                <input type="password" class="form-control" name="password" required>
-            </label>
+            <label class="form-label" for="password">Пароль</label>
+            <input id="password" type="password" class="form-control" name="password" required>
         </div>
 
         <button type="submit" name="login" class="btn btn-primary">Войти</button>

@@ -6,7 +6,7 @@ session_start();
 
 function requireLogin(): void
 {
-    if (!isset($_SESSION['user'])) {
+    if (!isset($_SESSION['user_id'])) {
         header("Location: login.php");
         exit();
     }
