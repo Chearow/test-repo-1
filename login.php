@@ -1,8 +1,8 @@
 <?php
-require_once "includes/db.php";
-/** @var mysqli $conn */
 
 session_start();
+require_once "includes/db.php";
+/** @var mysqli $conn */
 
 if (!isset($conn) || $conn->connect_error) {
     die("Ошибка подключения к базе данных.");
@@ -25,8 +25,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
 
             if (password_verify($pass, $user["password_hash"])) {
                 $_SESSION['user_id'] = $user['id'];
+
+                if (!empty($_SESSION['redirect_after_login'])) {
+                    $redirectUrl = $_SESSION['redirect_after_login'];
+                    unset($_SESSION['redirect_after_login']);
+                }else {
+                    $redirectUrl = 'dashboard.php';
+                }
+
                 $conn->close();
-                header('Location: dashboard.php');
+                header('Location: ' . $redirectUrl);
                 exit();
             } else {
                 $loginError = "Неправильный пароль.";
