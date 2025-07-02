@@ -1,5 +1,5 @@
 <?php
-/** @var @var mysqli $conn */
+/** @var mysqli $conn */
 
 $servername = "127.127.126.32";
 $username = "root";
